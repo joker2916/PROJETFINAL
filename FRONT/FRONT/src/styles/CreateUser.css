@@ -1,0 +1,74 @@
+.create-user-container {
+    min-height: auto;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.create-user-top {
+    display: grid;
+    gap: 10px !important;
+}
+
+.create-user-top input {
+    margin-bottom: 0 !important;
+}
+
+.input-select-role input {
+    width: 15px !important;
+}
+
+.input-select-role {
+    margin-bottom: 20px;
+}
+
+.update-user:disabled {
+    color: #5a5a5a;
+    cursor: default;
+    background-color: #979797;
+    border: none;
+}
+
+.update-user:disabled:hover {
+    background-color: #979797;
+    color: #5a5a5a;
+}
+
+.update-user {
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    font-family: var(--main_font);
+    padding: 10px 20px;
+    border-radius: 30px;
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    background-color: transparent;
+    transition: .3s ease;
+}
+
+.update-user:hover {
+    background-color: var(--primary_color);
+    color: #fff;
+}
+
+.input-update {
+    position: relative;
+}
+
+.clear-update {
+    position: absolute;
+    right: 12px;
+    cursor: pointer;
+    top: 32%;
+    font-size: 17px;
+}
+
+@media (max-width: 500px) {
+    .create-user-container {
+        min-height: 100vh;
+        border-radius: 0 !important;
+    }
+}

@@ -1,0 +1,141 @@
+.container {
+    width: 100%;
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.left_content {
+    width: 100%;
+}
+
+.left_content span {
+    font-size: clamp(25px, 4vw, 40px);
+    font-family: var(--main_font);
+    color: var(--text-color);
+}
+
+.left_content p {
+    margin-bottom: 20px;
+    width: min(500px, 100%);
+    color: var(--text-color);
+}
+
+.left_content form {
+    display: grid;
+    gap: 15px;
+}
+
+.left_content form .input_item {
+    display: grid;
+    position: relative;
+}
+
+.left_content form .input_item input {
+    border: 1px solid var(--grey);
+    color: var(--text-color);
+    background-color: transparent;
+    height: 50px;
+    padding-inline: 19px;
+    border-radius: 30px;
+}
+
+.left_content form input::placeholder {
+    color: var(--grey);
+}
+
+.forgot_link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forgot_link a {
+    color: var(--text-color);
+    font-weight: 400;
+    transition: var(--trans);
+    font-size: clamp(14px, 1vw, 20px);
+}
+
+.forgot_link a:hover {
+    color: var(--primary_color);
+}
+
+.left_content form button {
+    height: 50px;
+    border-radius: 30px;
+    background-color: var(--primary_color);
+    color: var(--white2);
+    transition: var(--trans);
+    cursor: pointer;
+    border: 1px solid var(--primary_color);
+}
+
+.left_content form button:hover {
+    background-color: transparent;
+    color: var(--primary_color);
+}
+
+.right_content {
+    display: none;
+}
+
+.show_password,
+.showPassword_conf {
+    position: absolute;
+    top: 23%;
+    right: 15px;
+    cursor: pointer;
+    font-size: 30px;
+    color: var(--text-color);
+}
+
+
+
+/* Media queries for responsive */
+
+@media (min-width: 950px) {
+
+    .left_content,
+    .right_content {
+        width: 50%;
+    }
+
+    .left_content {
+        padding-right: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left_content p {
+        text-align: center;
+
+    }
+
+    .left_content form {
+        width: 80%;
+    }
+
+    .right_content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .bg {
+        width: 100%;
+        height: 100%;
+        background: url('../assets/img/bg.jpg');
+        background-position: center;
+        background-size: cover;
+        border-radius: 50px;
+    }
+
+    .left_content form .input_item input,
+    .left_content form button {
+        height: 60px;
+    }
+}

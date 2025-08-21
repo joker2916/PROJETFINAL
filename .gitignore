@@ -1,0 +1,22 @@
+# Node.js (Backend & Frontend)
+
+node_modules/
+BACK/node_modules/
+FRONT/node_modules/
+
+
+# Fichiers sensibles
+
+.env
+BACK/.env
+FRONT/.env
+serviceAccountKey.json
+
+# React (Frontend)
+
+FRONT/build/
+
+
+# Autres fichiers inutiles
+
+.DS_Store
