@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:4000/api", // ou ton IP locale si nécessaire
+  baseURL: "https://projetfinal-wg3g.onrender.com", // ou ton IP locale si nécessaire
 });
 
 
