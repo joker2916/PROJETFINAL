@@ -46,7 +46,7 @@ export const DashBoardContainer = ({ userGrade }) => {
         // Charger les capteurs enregistrés
         const fetchSensors = async () => {
             try {
-                const res = await api.get("/sensors");
+                const res = await api.get("/api/sensors");
                 setSensors(res.data);
             } catch (err) {
                 console.error("Erreur capteurs :", err);
