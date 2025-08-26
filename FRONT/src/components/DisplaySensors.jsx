@@ -76,7 +76,7 @@ export function CreateSensor({ onClose }) {
             await api.post("/sensors", {
                 type, value: parseFloat(value), unit
             });
-            location.reload
+            window.location.reload();
             toast.success("Capteur créé avec succès !");
             onClose();
         } catch (err) {

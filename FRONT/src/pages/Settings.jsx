@@ -76,6 +76,10 @@ const SettingsContainer = ({ userGrade }) => {
     const [selectedSensors, setSelectedSensors] = useState([]);
     const [selectAllSensors, setSelectAllSensors] = useState(false);
 
+    // Add these states:
+    const [sensorType, setSensorType] = useState(null);
+    const [thresholds, setThresholds] = useState({}); // Example: { temperature: 20, humidity: 50 }
+
     const handleSelectUser = (userId, isSelected) => {
         if (isSelected) {
             setSelectedUsers(prev => [...new Set([...prev, userId])]);
@@ -210,13 +214,10 @@ const SettingsContainer = ({ userGrade }) => {
                                     const confirmed = window.confirm("Supprimer les capteurs sélectionnés ?");
                                     if (!confirmed) return;
                                     try {
-                                        await Promise.all(selectedSensors.map(id => api.delete(`/sensors/${id}`)));
-                                        toast.success("Capteurs supprimés !");
-                                        window.location.reload();
-                                    } catch (err) {
-                                        console.error(err);
-                                        toast.error("Erreur lors de la suppression");
-                                    }
+                                       
+                                    }catch (err) {
+            console.error("Erreur lors de la suppression des capteurs :", err);
+            toast.error("Erreur lors de la suppression des capteurs");}
                                 }}
                                 disabled={enableButton}
                             >
@@ -278,15 +279,6 @@ const SettingsContainer = ({ userGrade }) => {
                 </div>
             </div>
 
-            {showModal && (
-                <SensorBox
-                    sensorType={sensorType}
-                    sensorValue={thresholds[sensorType]}
-                    onClose={() => setShowModal(false)}
-
-                />
-            )}
-
             {showCreateModal && (<CreateUser onClose={() => setShowCreateModal(false)} />)}
 
             {showUpdateModal && userToEdit && (
@@ -312,4 +304,3 @@ const SettingsContainer = ({ userGrade }) => {
         </>
     );
 };
-
