@@ -58,7 +58,7 @@ export const DashBoardContainer = ({ userGrade }) => {
         // Lecture des données ESP32 toutes les 3 secondes
         const interval = setInterval(async () => {
             try {
-                const res = await api.get("/esp32/data");
+                const res = await api.get("/api/esp32/data");
                 const humidity = res.data.soil; // correspond à ton ESP32 JSON
                 const temperature = res.data.gaz;
                 const waterLevel = res.data.tank;
