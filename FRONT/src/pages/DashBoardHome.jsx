@@ -8,11 +8,11 @@ import venti from '../assets/img/ventilateur.png'
 import arros from '../assets/img/arrosoir.png'
 import { useLanguage } from "../contexts/LanguageContext";
 import { translations } from "../i18/translations";
-import { users } from "./Settings";
+//import { users } from "./Settings";
 import { disableButton } from "./Settings";
 import { useUser } from "../contexts/UserContext";
 import ClickSpark from "../components/ClickSpark";
-import useIrrigationControl from "../hooks/useIrrigationControl";
+
 
 export default function DashBoardHome() {
     const { user } = useUser();
@@ -91,10 +91,21 @@ export const DashBoardContainer = ({ userGrade }) => {
            
     };
 //ToggleIrrigation
-    const toggleIrrigation =  () => {
-        useIrrigationControl();
-        console.log("Irrigation toggled");
+    const toggleIrrigation = async (value) => {
+        try {
+           const payload = { 
+            action: 'irrigation', 
+            value: value 
+        };
+        await api.post("https://projetfinal-wg3g.onrender.com/api/esp32/data", payload);
+           console.log(`Commande d'irrigation envoyée avec succès: ${value ? 'Démarré' : 'Arrêté'}`);
+
+        } catch (err) {
+            console.error("Erreur de contrôle de la LED :", err);
+        }  
+           
     };
+
 
     return (
         <main className="dash_container">
