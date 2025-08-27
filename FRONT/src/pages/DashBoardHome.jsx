@@ -196,7 +196,7 @@ export const DashBoardContainer = ({ userGrade }) => {
                 </ClickSpark>
             </button>
 
-            <button className="dash_item dash_item8 dash_action" disabled={disableButton(userGrade)} onClick={toggleIrrigation}>
+            <button className="dash_item dash_item8 dash_action" disabled={disableButton(userGrade)} onClick={toggleIrrigation(true)}>
                 <ClickSpark sparkColor='#fff' sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
                     <div className="dash_act_img">
                         <img src={arros} alt="Icône arrosoir" />
