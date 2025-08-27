@@ -12,7 +12,7 @@ import { users } from "./Settings";
 import { disableButton } from "./Settings";
 import { useUser } from "../contexts/UserContext";
 import ClickSpark from "../components/ClickSpark";
-
+import useIrrigationControl from "../hooks/useIrrigationControl";
 
 export default function DashBoardHome() {
     const { user } = useUser();
@@ -84,13 +84,17 @@ export const DashBoardContainer = ({ userGrade }) => {
     // ToggleLed
     const toggleLED = async () => {
         try {
-            await api.patch("/esp32/toggle-led");
-            console.log("LED toggled");
+           console.log("LED toggled");
         } catch (err) {
             console.error("Erreur de contrôle de la LED :", err);
-        }
+        }  await api.patch("/esp32/toggle-led");
+           
     };
-
+//ToggleIrrigation
+    const toggleIrrigation =  () => {
+        useIrrigationControl();
+        console.log("Irrigation toggled");
+    };
 
     return (
         <main className="dash_container">
@@ -181,7 +185,7 @@ export const DashBoardContainer = ({ userGrade }) => {
                 </ClickSpark>
             </button>
 
-            <button className="dash_item dash_item8 dash_action" disabled={disableButton(userGrade)}>
+            <button className="dash_item dash_item8 dash_action" disabled={disableButton(userGrade)} onClick={toggleIrrigation}>
                 <ClickSpark sparkColor='#fff' sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
                     <div className="dash_act_img">
                         <img src={arros} alt="Icône arrosoir" />
