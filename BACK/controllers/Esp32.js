@@ -1,10 +1,21 @@
-// controllers/Esp32.js
 const Alert = require("../models/Alert");
 const Sensor = require("../models/Sensor");
 
 exports.receiveData = async (req, res) => {
     try {
-        const data = req.body; // l’ESP32 enverra ses mesures en JSON
+        // Afficher le body brut pour voir exactement ce que Render reçoit
+        console.log("📩 Body brut reçu :", req.rawBody ? req.rawBody.toString() : req.body);
+
+        // Si req.body n'est pas encore parsé, essayer de le parser
+        let data = req.body;
+        if (typeof data === "string") {
+            try {
+                data = JSON.parse(data);
+            } catch (parseErr) {
+                console.error("❌ Erreur JSON.parse :", parseErr.message);
+                return res.status(400).json({ error: "JSON invalide reçu" });
+            }
+        }
 
         // Vérification des seuils (ex: gaz, humidité sol)
         const sensors = await Sensor.getAll();
@@ -25,7 +36,7 @@ exports.receiveData = async (req, res) => {
 
         res.json({ success: true, data });
     } catch (err) {
-        console.error("❌ Erreur réception ESP32:", err.message);
+        console.error("❌ Erreur réception ESP32:", err);
         res.status(500).json({ error: "Erreur lors de la réception des données" });
     }
 };

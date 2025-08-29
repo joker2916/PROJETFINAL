@@ -19,6 +19,16 @@ app.get("/", (req, res) => {
 
 
 /* Esp32 */
+// Middleware pour récupérer le raw body
+app.use((req, res, next) => {
+  let data = [];
+  req.on('data', chunk => { data.push(chunk); });
+  req.on('end', () => {
+    req.rawBody = Buffer.concat(data);
+    next();
+  });
+});
+
 app.use("/api/esp32", require("./routes/Esp32"));
 
 const PORT = process.env.PORT || 5000;
