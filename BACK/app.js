@@ -11,6 +11,8 @@ app.use("/api/sensors", require("./routes/Sensor"));
 app.use("/api/actuators", require("./routes/Actuator"));
 app.use("/api/alerts", require("./routes/Alert"));
 app.use("/api/users", require("./routes/User"));
+app.use("/api/data", require ("./routes/Esp32"));
+
 
 app.get("/", (req, res) => {
     res.send("backend ok");
