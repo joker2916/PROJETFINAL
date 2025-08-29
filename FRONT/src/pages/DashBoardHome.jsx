@@ -116,7 +116,7 @@ export const DashBoardContainer = ({ userGrade }) => {
                     <span className="dash_function">{t.humidity}</span>
                     <div className="dash_span">
                         <span>
-                            {realHumidity !== null ? `${realHumidity} ` : `${getSensorValue("humidite")} `}
+                            {realHumidity !== null ? `${realHumidity} ` : `0`}
                         </span>
                     </div>
                 </div>
@@ -128,7 +128,7 @@ export const DashBoardContainer = ({ userGrade }) => {
                     <span className="dash_function">{t.temperature}</span>
                     <div className="dash_span">
                         <span>
-                            {realTemperature !== null ? `${realTemperature}` : `${getSensorValue("thermique")}`}
+                            {realTemperature !== null ? `${realTemperature}` : `0`}
                         </span>
                     </div>
                 </div>
@@ -140,7 +140,7 @@ export const DashBoardContainer = ({ userGrade }) => {
                     <span className="dash_function">CO2</span>
                     <div className="dash_span">
                         {/* <span>{getSensorValue("co2")}%</span> */}
-                        <span>{realTemperature !== null ? `${realTemperature}` : `${getSensorValue("thermique")}`}</span>
+                        <span>{realTemperature !== null ? `${realTemperature}` : `0`}</span>
 
                     </div>
                 </div>
@@ -151,7 +151,7 @@ export const DashBoardContainer = ({ userGrade }) => {
                     <span className="dash_function">{t.brightness}</span>
                     <div className="dash_span">
                         <span>
-                            {realLight !== null ? `${realLight}` : getSensorValue("luminosite")}
+                            {realLight !== null ? `${realLight}` : `0`}
                         </span>
                         {/* <span>{getSensorValue("luminosite")}%</span> */}
                     </div>
